@@ -18,11 +18,13 @@ import { HomeComponent } from './home';
         ReactiveFormsModule,
         HttpClientModule,
         AppRoutingModule
+    
     ],
     declarations: [
         AppComponent,
         AlertComponent,
-        HomeComponent
+        HomeComponent,
+        
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
