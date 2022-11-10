@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { AlertComponent } from './_components';
 import { HomeComponent } from './home';
 
+//contains imports,declarations
 @NgModule({
     imports: [
         BrowserModule,
