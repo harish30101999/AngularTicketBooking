@@ -8,6 +8,7 @@ const accountModule = () => import('./account/account.module').then(x => x.Accou
 const usersModule = () => import('./users/users.module').then(x => x.UsersModule);
 
 const routes: Routes = [
+    //direct to homecomponent,usermodule and accountmodule
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'users', loadChildren: usersModule, canActivate: [AuthGuard] },
     { path: 'account', loadChildren: accountModule },
