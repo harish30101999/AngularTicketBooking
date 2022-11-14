@@ -1,4 +1,4 @@
-<!-- nav -->
+
 <nav class="navbar navbar-expand navbar-dark bg-light" *ngIf="user">
     <div class="navbar-nav" style="background-color:rgb(53, 229, 235)">
         <a class="nav-item nav-link" routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" style="color:blue">Home</a>
@@ -7,7 +7,7 @@
     </div>
 </nav>
 
-<!-- main app container -->
+
 <div class="app-container" [ngClass]="{ 'bg-light': user }">
     <alert></alert>
     <router-outlet></router-outlet>
