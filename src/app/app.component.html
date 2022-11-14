@@ -1,9 +1,9 @@
 <!-- nav -->
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="user">
-    <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-        <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Users</a>
-        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+<nav class="navbar navbar-expand navbar-dark bg-light" *ngIf="user">
+    <div class="navbar-nav" style="background-color:rgb(53, 229, 235)">
+        <a class="nav-item nav-link" routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" style="color:blue">Home</a>
+        <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active" style="color:blue">Users</a>
+        <a class="nav-item nav-link" (click)="logout()" style="color:blue">Logout</a>
     </div>
 </nav>
 
