@@ -11,22 +11,22 @@ export class ListService {
   constructor(private httpClient: HttpClient) {}
 
   public getAllListService() {
-    return this.httpClient.get('http://localhost:8080/list/');
+    return this.httpClient.get('http://localhost:8080/register/');
   }
 
   public getListService(id) {
-    return this.httpClient.get('http://localhost:8080/list/' + id);
+    return this.httpClient.get('http://localhost:8080/register/' + id);
   }
 
   public deleteListService(id) {
-    return this.httpClient.delete('http://localhost:8080/list/' + id);
+    return this.httpClient.delete('http://localhost:8080/register/' + id);
   }
   
   public createListService(list: List) {
    // alert(JSON.stringify(ticketbooking));
     const headers = { 'content-type': 'application/json' };
     return this.httpClient.post(
-      'http://localhost:8080/list/',
+      'http://localhost:8080/register/',
       JSON.stringify(list),
       {
         headers: headers,
