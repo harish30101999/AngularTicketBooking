@@ -4,19 +4,30 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AccountService, AlertService } from '../_services';
+import { User } from '../_models/user';
+import { RegisterService } from './register.service';
+
+
 
 @Component({ templateUrl: 'register.component.html' })
+
+
 export class RegisterComponent implements OnInit {
+
+
     form: FormGroup;
     loading = false;
     submitted = false;
+    register = [];
+    model = new User();
 
     constructor(
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
         private accountService: AccountService,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private registerService: RegisterService
     ) {
         // redirect to home if already logged in
         if (this.accountService.userValue) {
@@ -32,6 +43,51 @@ export class RegisterComponent implements OnInit {
             password: ['', [Validators.required, Validators.minLength(6)]]
         });
     }
+    
+    public getAllRegister() {
+        this.registerService
+          .getAllRegisterService()
+          .subscribe((x: any[]) => {
+            this.register = x;
+          });
+      }
+      editRegister(id: string) {
+
+        alert(id);
+        this.registerService
+      .getRegisterService(id)
+      .subscribe((data: any) => (this.model = data));
+     }
+     deleteRegister(id) {
+        alert(id);
+        this.registerService
+          .deleteRegisterService(id)
+          .subscribe((data) => {
+            this.getAllRegister();
+          });
+      }
+      addRegister() {
+        alert(JSON.stringify(this.model));
+       if (!this.model.id) {
+         // alert(JSON.stringify(this.model));
+         this.registerService
+           .createRegisterService(this.model)
+           .subscribe((data) => {
+             this.getAllRegister();
+             this.model = new User();
+           });
+       } else {
+         // alert(JSON.stringify(this.model));
+         this.registerService
+           .updateRegisterService(this.model.id, this.model)
+           .subscribe((data) => {
+             this.getAllRegister();
+             this.model = new User();
+           });
+       }
+       
+     }
+     
 
     // convenience getter for easy access to form fields
     get f() { return this.form.controls; }

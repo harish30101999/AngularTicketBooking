@@ -2,15 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from '../_services';
-import { List } from './list';
+
 import { ListService } from './list.service';
+import { User } from '../_models';
 
 @Component({ templateUrl: 'list.component.html' })
 export class ListComponent implements OnInit {
 
   users = null;
   list = [];
-  model = new List();
+  model = new User();
   form: FormGroup;
   submitted = false;
 //   accountService: any;
@@ -35,6 +36,7 @@ export class ListComponent implements OnInit {
         this.users = this.users.filter((x) => x.id !== id);
       });
   }
+  
 
   public getAllList() {
     this.listService.getAllListService().subscribe((x: any[]) => {
@@ -64,7 +66,7 @@ export class ListComponent implements OnInit {
       // alert(JSON.stringify(this.model));
       this.listService.createListService(this.model).subscribe((data) => {
         this.getAllList();
-        this.model = new List();
+        this.model = new User();
       });
     } else {
       // alert(JSON.stringify(this.model));
@@ -72,7 +74,7 @@ export class ListComponent implements OnInit {
         .updateListService(this.model.id, this.model)
         .subscribe((data) => {
           this.getAllList();
-          this.model = new List();
+          this.model = new User();
         });
     }
   }

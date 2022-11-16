@@ -7,23 +7,25 @@ import { User } from '../_models/user';
 @Injectable({
   providedIn: 'root',
 })
-export class ListService {
+
+
+export class RegisterService {
 
   constructor(private httpClient: HttpClient) {}
 
-  public getAllListService() {
+  public getAllRegisterService() {
     return this.httpClient.get('http://localhost:8080/register/');
   }
 
-  public getListService(id) {
+  public getRegisterService(id) {
     return this.httpClient.get('http://localhost:8080/register/' + id);
   }
 
-  public deleteListService(id) {
+  public deleteRegisterService(id) {
     return this.httpClient.delete('http://localhost:8080/register/' + id);
   }
   
-  public createListService(user: User) {
+  public createRegisterService(user: User) {
    // alert(JSON.stringify(ticketbooking));
     const headers = { 'content-type': 'application/json' };
     return this.httpClient.post(
@@ -35,10 +37,10 @@ export class ListService {
     );
   }
   
-  public updateListService(id, user: User) {
+  public updateRegisterService(id, user: User) {
     const headers = { 'content-type': 'application/json' };
     return this.httpClient.put(
-      'http://localhost:8080/register/' + id,
+      'http://localhost:8080/user/' + id,
       JSON.stringify(user),
       {
         headers: headers,
